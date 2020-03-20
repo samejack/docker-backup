@@ -1,10 +1,31 @@
 #!/usr/bin/env bash
 
+# setup time zone
+if [ ! "${TZ}" ]; then
+    TZ=UTC
+fi
+echo "TIME_ZONE=${TZ}"
+ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+if [ ! "${BACKUP_PATH}" ]; then
+    BACKUP_PATH=/mnt/backup
+fi
+if [ ! -d ${BACKUP_PATH} ]; then
+    mkdir -p "${BACKUP_PATH}"
+fi
+
 # make link to custom location of /etc/cron.d if provided
 if [ "${CRON_PATH}" ]; then
     rm -rf /etc/cron.d
     ln -sfTv "${CRON_PATH}" /etc/cron.d
 fi
+
+if [ "${JOB_SCHEDULE}" = "" ]; then
+    JOB_SCHEDULE='27 4 * * *'
+fi
+
+echo "${JOB_SCHEDULE} root /usr/bin/backup.sh >> /var/log/cron.log" > /etc/cron.d/backup
+chmod +x /etc/cron.d/backup
 
 # remove write permission for (g)roup and (o)ther (required by cron)
 chmod -R go-w /etc/cron.d

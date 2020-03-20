@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+
+    backup:
+      image: samejack/backup:latest
+      restart: always
+      build:
+        context: ./
+      environment:
+        - TZ=Asia/Taipei
+        - JOB_SCHEDULE=27 4 * * *
+        - BACKUP_PATH=/mnt/backup
+
+        - FILE_BACKUP_ENABLED=yes
+        - FILE_BACKUP_ROLL_DAY=14
+        - FILE_PATH=/home
+
+        - MYSQL_BACKUP_ENABLED=yes
+        - MYSQL_BACKUP_ROLL_DAY=14
+        - MYSQL_USER=default
+        - MYSQL_PASSWORD=default_secure
+        - MYSQL_HOST=mysql
+        - MYSQL_PORT=3306
+
+      volumes:
+        - ./storage/backup:/mnt/backup

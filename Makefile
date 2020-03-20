@@ -1,6 +1,6 @@
-NAME := backup
+NAME := samejack/backup
 TAG := latest
-IMAGE_NAME := samejack/$(NAME)
+IMAGE_NAME := $(NAME)
 
 .PHONY: help build push clean
 
@@ -14,7 +14,6 @@ build: ## Builds docker image latest
 	docker build --pull -t $(IMAGE_NAME):latest .
 
 push: ## Pushes the docker image to hub.docker.com
-	# Don't --pull here, we don't want any last minute upsteam changes
 	docker build -t $(IMAGE_NAME):$(TAG) .
 	docker tag $(IMAGE_NAME):$(TAG) $(IMAGE_NAME):latest
 	docker push $(IMAGE_NAME):$(TAG)
