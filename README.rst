@@ -4,8 +4,8 @@
 .. image:: https://travis-ci.org/samejack/docker-backup.svg?branch=master
    :target: https://travis-ci.org/samejack/docker-backup
 
-.. image:: https://img.shields.io/docker/build/samejack/docker-backup.svg
-   :target: https://hub.docker.com/r/samejack/docker-backup/
+.. image:: https://img.shields.io/docker/build/samejack/backup.svg
+   :target: https://hub.docker.com/r/samejack/backup/
 
 docker-backup
 =============
