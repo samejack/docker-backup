@@ -1,0 +1,15 @@
+
+language: bash
+services: docker
+
+install:
+  - git clone https://github.com/samejack/docker-backup
+
+before_script:
+  - image="samejack/backup"
+
+script:
+  - travis_retry docker build -t "$image" .
+
+after_script:
+  - docker images
