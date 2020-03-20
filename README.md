@@ -1,6 +1,4 @@
-.. image:: https://img.shields.io/badge/license-APACHE-blue.svg
-   :target: http://www.apache.org/licenses/LICENSE-2.0
-   
+[![License](https://poser.pugx.org/samejack/php-argv/license)](https://packagist.org/packages/samejack/php-argv)
 
 # docker-backup
 
