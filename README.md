@@ -1,3 +1,7 @@
+.. image:: https://img.shields.io/badge/license-APACHE-blue.svg
+   :target: http://www.apache.org/licenses/LICENSE-2.0
+   
+
 # docker-backup
 
 Backup docker image. Can be backup batabase, files, postgresql(TODO), elasticsearch(TODO), mongodb(TODO).
@@ -16,3 +20,13 @@ MYSQL_USER            |            |Mysql login username
 MYSQL_PASSWORD        |            |Mysql login password
 MYSQL_HOST            |mysql       |Mysql host
 MYSQL_PORT            |3306        |Mysql post
+
+## How to build docker image
+git clone and make
+```
+make
+```
+or get from Docker Hub
+```
+docker pull samejack/backup
+```
