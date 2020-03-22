@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 
+# default
+if [ ! "${TZ}" ]; then TZ='UTC'; fi
+if [ ! "${JOB_SCHEDULE}" ]; then JOB_SCHEDULE='27 4 * * *'; fi
+if [ ! "${BACKUP_PATH}" ]; then BACKUP_PATH='/mnt/backup'; fi
+if [ ! "${FILE_BACKUP_ENABLED}" ]; then FILE_BACKUP_ENABLED='no'; fi
+if [ ! "${MYSQL_BACKUP_ENABLED}" ]; then MYSQL_BACKUP_ENABLED='no'; fi
+
+
 # setup time zone
-if [ ! "${TZ}" ]; then
-    TZ=UTC
-fi
 echo "TIME_ZONE=${TZ}"
 ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-if [ ! "${BACKUP_PATH}" ]; then
-    BACKUP_PATH=/mnt/backup
-fi
 if [ ! -d ${BACKUP_PATH} ]; then
     mkdir -p "${BACKUP_PATH}"
 fi
@@ -18,10 +20,6 @@ fi
 if [ "${CRON_PATH}" ]; then
     rm -rf /etc/cron.d
     ln -sfTv "${CRON_PATH}" /etc/cron.d
-fi
-
-if [ "${JOB_SCHEDULE}" = "" ]; then
-    JOB_SCHEDULE='27 4 * * *'
 fi
 
 echo "${JOB_SCHEDULE} root /usr/bin/backup.sh >> /var/log/cron.log" > /etc/cron.d/backup
