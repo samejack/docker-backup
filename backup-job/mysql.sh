@@ -25,9 +25,20 @@ if ! [ -d "${STORE_PATH}" ] ; then
     mkdir -p ${STORE_PATH}
 fi
 
-mysqldump --user=${MYSQL_USER} -p"${MYSQL_PASSWORD}" -h ${MYSQL_HOST} -P ${MYSQL_PORT} --all-databases > ${DUMP_FILE}
+if [ "${MYSQL_DATABASE}" = "" ] ; then
+  DATABASE_PARAM='--all-databases'
+else
+  DATABASE_PARAM="-B ${MYSQL_DATABASE}"
+fi
+
+mysqldump --user=${MYSQL_USER} -p"${MYSQL_PASSWORD}" -h ${MYSQL_HOST} -P ${MYSQL_PORT} ${DATABASE_PARAM} > ${DUMP_FILE}
 /bin/tar -zcvf "${TAR_FILE}" ${DUMP_FILE}
 rm -rf ${DUMP_FILE}
+
+# Upload to AWS S3
+if [ ${AWS_S3_UPLOAD_ENABLED} = yes ] ; then
+  /usr/local/bin/aws s3 cp ${TAR_FILE} s3://${AWS_S3_BUCKET}${AWS_S3_OBJECT_PREFIX}/${BACKUP_NAME}.tar.gz
+fi
 
 echo "Remove old file"
 rm -rf `find ${STORE_PATH}/ -mtime +${ROLL_DAY} | xargs`

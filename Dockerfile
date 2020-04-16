@@ -24,6 +24,14 @@ RUN if [ ${INSTALL_PGSQL_CLIENT} = true ]; then \
     apt-get -y install postgresql-client \
 ;fi
 
+# AWS CLI
+RUN apt-get -y install curl unzip \
+    && curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
+    && unzip awscliv2.zip \
+    && ./aws/install \
+    && rm -rf awscliv2.zip \
+    && rm -rf ./aws
+
 COPY entrypoint.sh /usr/sbin
 
 ADD backup-job /etc/backup-job

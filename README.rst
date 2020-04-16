@@ -28,6 +28,12 @@ MYSQL_USER                          Mysql login username
 MYSQL_PASSWORD                      Mysql login password
 MYSQL_HOST            mysql         Mysql host
 MYSQL_PORT            3306          Mysql post
+MYSQL_DATABASE        default       (Optional) Backup all databases if not setup
+AWS_ACCESS_KEY_ID                   AWS IAM access key
+AWS_SECRET_ACCESS_KEY               AWS IAM secret key
+AWS_S3_UPLOAD_ENABLED no            Auto upload to S3 enable
+AWS_S3_BUCKET                       S3 bucket name
+AWS_S3_OBJECT_PREFIX                S3 object prefix path (start with /)
 ===================== ============= =======================
 
 How to build docker image

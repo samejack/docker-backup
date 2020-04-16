@@ -20,8 +20,15 @@ services:
         - MYSQL_BACKUP_ROLL_DAY=14
         - MYSQL_USER=default
         - MYSQL_PASSWORD=default_secure
+        - MYSQL_DATABASE=default
         - MYSQL_HOST=mysql
         - MYSQL_PORT=3306
+
+        - AWS_ACCESS_KEY_ID=aws-key-id
+        - AWS_SECRET_ACCESS_KEY=aws-secret-key
+        - AWS_S3_UPLOAD_ENABLED=no
+        - AWS_S3_BUCKET=your-backet-name
+        - AWS_S3_OBJECT_PREFIX=/backup
 
       volumes:
         - ./storage/backup:/mnt/backup

@@ -22,7 +22,7 @@ if [ "${CRON_PATH}" ]; then
     ln -sfTv "${CRON_PATH}" /etc/cron.d
 fi
 
-echo "${JOB_SCHEDULE} root /usr/bin/backup.sh >> /var/log/cron.log" > /etc/cron.d/backup
+echo "${JOB_SCHEDULE} root /usr/bin/backup.sh" > /etc/cron.d/backup
 chmod +x /etc/cron.d/backup
 
 # remove write permission for (g)roup and (o)ther (required by cron)
