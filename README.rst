@@ -19,9 +19,10 @@ Environment           Default       Description
 TZ                    UTC           Time Zone
 JOB_SCHEDULE          27 4 \* \* \* Schedule of crond
 BACKUP_PATH           /mnt/backup   Backup path
+PROJECT_NAME                        Project name (backup file prefix)
 FILE_BACKUP_ENABLED   no            Files backup enable
 FILE_BACKUP_ROLL_DAY  14            Fiil backup roll days
-FILE_PATH             /home         Backup file source path
+FILE_PATH             /backup-files Backup file source path
 MYSQL_BACKUP_ENABLED  no            Mysql backup enable
 MYSQL_BACKUP_ROLL_DAY 14            Mysql backup roll days
 MYSQL_USER                          Mysql login username

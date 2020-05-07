@@ -11,10 +11,11 @@ services:
         - TZ=Asia/Taipei
         - JOB_SCHEDULE=27 4 * * *
         - BACKUP_PATH=/mnt/backup
+        - PROJECT_NAME=production
 
         - FILE_BACKUP_ENABLED=yes
         - FILE_BACKUP_ROLL_DAY=14
-        - FILE_PATH=/home
+        - FILE_PATH=/backup-files
 
         - MYSQL_BACKUP_ENABLED=yes
         - MYSQL_BACKUP_ROLL_DAY=14
@@ -32,3 +33,4 @@ services:
 
       volumes:
         - ./storage/backup:/mnt/backup
+        - /home:/backup-files:ro
