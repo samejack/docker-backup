@@ -31,7 +31,7 @@ TARGET_FILE="${STORE_PATH}/${BACKUP_NAME}-${TODAY}.tar.gz"
 
 # Upload to AWS S3
 if [ ${AWS_S3_UPLOAD_ENABLED} = yes ] ; then
-  /usr/local/bin/aws s3 cp ${TARGET_FILE} s3://${AWS_S3_BUCKET}${AWS_S3_OBJECT_PREFIX}/${BACKUP_NAME}.tar.gz
+  /usr/local/bin/aws s3 cp ${TARGET_FILE} s3://${AWS_S3_BUCKET}${AWS_S3_OBJECT_PREFIX}/${TODAY}_${BACKUP_NAME}.tar.gz
 fi
 
 echo "Remove old file"
