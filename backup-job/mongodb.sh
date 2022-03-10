@@ -11,10 +11,10 @@ rollingDays=7
 dumpFilename="mongodb"
 dumpTmpDir="/tmp/mongo-dump-tmp"
 backupPath="/data/backup/mongodb"
-username="atquiz"
-password="@quiz2014"
+username="admin"
+password=""
 hostname="localhost"
-database="atquiz"
+database="mydb"
 
 #Start Dumpping.......
 today=`date "+%Y-%m-%d"`

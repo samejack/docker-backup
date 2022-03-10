@@ -15,7 +15,7 @@ dumpsource="/tmp/postgresql-backup.sql"
 dumppath="/data/backup/${dumpfile}/"
 
 username="postgres"
-password="!@#\$%jihU"
+password=""
 
 #Start Dumpping.......
 echo "Today: ${today}"
