@@ -34,7 +34,7 @@ else
   DATABASE_PARAM="-B ${MYSQL_DATABASE}"
 fi
 
-mysqldump --default-character-set=utf8mb4 --user=${MYSQL_USER} -p"${MYSQL_PASSWORD}" -h ${MYSQL_HOST} -P ${MYSQL_PORT} ${DATABASE_PARAM} > ${DUMP_FILE}
+mysqldump --default-character-set=utf8mb4 --user=${MYSQL_USER} -p"${MYSQL_PASSWORD}" -h ${MYSQL_HOST} -P ${MYSQL_PORT} ${DATABASE_PARAM} --force > ${DUMP_FILE}
 /bin/tar -zcvf "${TAR_FILE}" ${DUMP_FILE}
 rm -rf ${DUMP_FILE}
 
